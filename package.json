@@ -1,0 +1,57 @@
+{
+  "name": "mui-mdx-components",
+  "version": "0.1.0",
+  "description": "MDX components for material UI",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp package.json README.md ./dist",
+    "test": "echo \"Warn: no test specified\"",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joesturge/mui-mdx-components.git"
+  },
+  "keywords": [
+    "mdx",
+    "mui",
+    "markdown",
+    "material",
+    "ui",
+    "components"
+  ],
+  "author": "Joe Sturgeon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joesturge/mui-mdx-components/issues"
+  },
+  "homepage": "https://github.com/joesturge/mui-mdx-components#readme",
+  "peerDependencies": {
+    "@mdx-js/mdx": ">=2.0.0",
+    "@mui/material": ">=5.0.0",
+    "react": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mdx-js/react": "^2.3.0",
+    "@mui/material": "^5.13.1",
+    "@types/node": "^20.3.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^5.0.2"
+  }
+}
