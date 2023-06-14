@@ -2,15 +2,12 @@
   "name": "mui-mdx-components",
   "version": "0.1.1-alpha.0",
   "description": "MDX components for material UI",
-  "files": [
-    "dist"
-  ],
   "type": "module",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp package.json README.md ./dist",
+    "build": "npm run clean && tsc && cp package.json README.md LICENSE ./dist",
     "test": "echo \"Warn: no test specified\"",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
