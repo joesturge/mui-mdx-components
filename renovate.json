@@ -3,5 +3,23 @@
   "extends": [
     "config:js-lib",
     "group:allNonMajor"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["react", "react-dom"],
+      "allowedVersions": ">=17"
+    },
+    {
+      "matchPackageNames": ["@mui/material"],
+      "allowedVersions": ">=5"
+    },
+    {
+      "matchPackageNames": ["@mdx-js/mdx"],
+      "allowedVersions": ">=2"
+    },
+    {
+      "matchPackageNames": ["@emotion/react", "@emotion/styled"],
+      "allowedVersions": ">=11"
+    }
   ]
 }
