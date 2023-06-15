@@ -41,7 +41,7 @@ const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
       {...props}
       component="strong"
       variant="inherit"
-      {...propOverrides.em}
+      {...propOverrides.strong}
     />
   ),
   em: (props: object) => (
@@ -52,11 +52,11 @@ const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
       {...propOverrides.em}
     />
   ),
-  blockquote: (props: object) => <Paper {...props} {...propOverrides.em} />,
-  pre: (props: object) => <Paper {...props} {...propOverrides.em} />,
-  a: (props: object) => <Link {...props} {...propOverrides.em} />,
+  blockquote: (props: object) => <Paper {...props} {...propOverrides.blockquote} />,
+  pre: (props: object) => <Paper {...props} {...propOverrides.pre} />,
+  a: (props: object) => <Link {...props} {...propOverrides.a} />,
   wrapper: (props: object) => (
-    <div {...props} className="markdown-body" {...propOverrides.em} />
+    <div {...props} className="markdown-body" {...propOverrides.wrapper} />
   ),
 });
 
