@@ -6,7 +6,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["react", "react-dom"],
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "allowedVersions": ">=17"
     },
     {
