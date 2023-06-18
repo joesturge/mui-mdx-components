@@ -1,8 +1,14 @@
-import { Divider, Link, Paper, Typography } from "@mui/material";
+import { Divider, Link, Typography } from "@mui/material";
 import React from "react";
-import { MuiMdxComponentsOptions, MuiMdxComponentsOptionsPropOverrides } from "./types";
+import { MDXComponents } from "mdx/types.js";
+import {
+  MuiMdxComponentsOptions,
+  MuiMdxComponentsOptionsPropOverrides,
+} from "./types";
 
-const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
+const defaults: (
+  propOverrides: MuiMdxComponentsOptionsPropOverrides
+) => MDXComponents = (propOverrides) => ({
   h1: (props: object) => (
     <Typography {...props} component="h1" variant="h1" {...propOverrides.h1} />
   ),
@@ -20,18 +26,6 @@ const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
   ),
   h6: (props: object) => (
     <Typography {...props} component="h6" variant="h6" {...propOverrides.h6} />
-  ),
-  ul: (props: object) => (
-    <Typography {...props} component="ul" {...propOverrides.ul} />
-  ),
-  ol: (props: object) => (
-    <Typography {...props} component="ol" {...propOverrides.ol} />
-  ),
-  li: (props: object) => (
-    <Typography {...props} component="li" {...propOverrides.li} />
-  ),
-  hr: (props: object) => (
-    <Divider {...props} component="hr" {...propOverrides.hr} />
   ),
   p: (props: object) => (
     <Typography {...props} component="p" variant="body1" {...propOverrides.p} />
@@ -52,9 +46,34 @@ const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
       {...propOverrides.em}
     />
   ),
-  blockquote: (props: object) => <Paper {...props} {...propOverrides.blockquote} />,
-  pre: (props: object) => <Paper {...props} {...propOverrides.pre} />,
+  ul: (props: object) => (
+    <Typography
+      {...props}
+      component="ul"
+      variant="inherit"
+      {...propOverrides.ul}
+    />
+  ),
+  ol: (props: object) => (
+    <Typography
+      {...props}
+      component="ol"
+      variant="inherit"
+      {...propOverrides.ol}
+    />
+  ),
+  li: (props: object) => (
+    <Typography
+      {...props}
+      component="li"
+      variant="inherit"
+      {...propOverrides.li}
+    />
+  ),
   a: (props: object) => <Link {...props} {...propOverrides.a} />,
+  hr: (props: object) => (
+    <Divider {...props} component="hr" {...propOverrides.hr} />
+  ),
   wrapper: (props: object) => (
     <div {...props} className="markdown-body" {...propOverrides.wrapper} />
   ),
@@ -62,8 +81,8 @@ const defaults = (propOverrides: MuiMdxComponentsOptionsPropOverrides) => ({
 
 const components = (options?: MuiMdxComponentsOptions) => {
   return {
-    ...(options?.overrides || {}),
     ...defaults(options?.propOverrides || {}),
+    ...(options?.overrides || {}),
   };
 };
 export default components;

@@ -2,6 +2,8 @@
 
 This module creates an MDX components object for use with MDXjs and Material UI.
 
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg?style=flat)
+
 # Usage
 
 Intended to be used with `react:17+` `@mui/material:5` and `@mdx-js/mdx:2`.
