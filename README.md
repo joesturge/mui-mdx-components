@@ -39,6 +39,37 @@ const options = {
 export default () => <MDXProvider components={components(options)}>
 ```
 
+# Supported Components
+
+- [x] **h1**
+- [x] **h2**
+- [x] **h3**
+- [x] **h4**
+- [x] **h5**
+- [x] **h6**
+- [x] **p**
+- [x] **strong**
+- [x] **em**
+- [x] **ul**
+- [x] **ol**
+- [x] **li**
+- [x] **a**
+- [x] **hr**
+- [x] **wrapper**
+- [ ] **code**
+- [ ] **pre**
+- [ ] **blockquote**
+- [ ] **del**
+- [ ] **input**
+- [ ] **section**
+- [ ] **sup**
+- [ ] **table**
+- [ ] **tbody**
+- [ ] **td**
+- [ ] **th**
+- [ ] **thead**
+- [ ] **tr**
+
 # Disclaimer
 
 This project is a WIP please feel free to contribute on github.
