@@ -10,6 +10,10 @@
       "allowedVersions": "<=17"
     },
     {
+      "matchPackageNames": ["@testing-library/react"],
+      "allowedVersions": "<=12"
+    },
+    {
       "matchPackageNames": ["@mui/material"],
       "allowedVersions": "<=5"
     },
