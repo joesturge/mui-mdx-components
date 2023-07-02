@@ -1,13 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Divider, Link, Paper, Typography, useTheme } from "@mui/material";
+import {
+  Divider,
+  Link,
+  Paper,
+  Typography,
+  darken,
+  lighten,
+  useTheme,
+} from "@mui/material";
 import React from "react";
 import { MDXComponents } from "mdx/types.js";
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { vs, vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { vs, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import {
   MuiMdxComponentsOptions,
   MuiMdxComponentsOptionsPropOverrides,
 } from "./types";
+
+// eslint-disable-next-line react-refresh/only-export-components
+const NoOpPre = (
+  props: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLPreElement>,
+    HTMLPreElement
+  >
+) => {
+  return <>{props.children}</>;
+};
 
 const defaults: (
   propOverrides: MuiMdxComponentsOptionsPropOverrides
@@ -78,7 +96,7 @@ const defaults: (
     <Divider
       {...props}
       component="hr"
-      sx={{ height: "1em" }}
+      sx={{ height: (theme) => theme.spacing(1) }}
       {...propOverrides.hr}
     />
   ),
@@ -86,29 +104,88 @@ const defaults: (
     <Paper
       {...props}
       component="blockquote"
-      sx={{ paddingLeft: "1em", borderLeft: "3px solid", borderRadius: 0 }}
-      {...propOverrides.wrapper}
+      square
+      elevation={1}
+      sx={{
+        paddingLeft: (theme) => theme.spacing(1),
+        paddingTop: (theme) => theme.spacing(0.5),
+        paddingBottom: (theme) => theme.spacing(0.5),
+        paddingRight: (theme) => theme.spacing(0.5),
+        color: (theme) => theme.palette.text.secondary,
+        borderLeft: 3,
+      }}
+      {...propOverrides.blockquote}
     />
   ),
   pre: (props: any) => {
-    console.log(props);
+    const { children, ...otherProps } = props;
     return (
       <Paper
-        {...props}
+        {...otherProps}
         component="pre"
-        sx={{ padding: "1em" }}
-        {...propOverrides.wrapper}
-      />
+        elevation={2}
+        sx={{
+          padding: (theme) => theme.spacing(1),
+          color: (theme) => theme.palette.text.secondary,
+        }}
+        {...propOverrides.pre}
+      >
+        {React.Children.map(children, (child: React.ReactNode) => {
+          if (React.isValidElement(child)) {
+            const childOverride = {
+              className: [
+                child.props.className,
+                "mui-mdx-components-within-pre",
+              ]
+                .filter((item) => item)
+                .join(" "),
+              ...child.props,
+            };
+            return React.cloneElement(child, childOverride);
+          }
+          return child;
+        })}
+      </Paper>
     );
   },
   code: (props: any) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const theme = useTheme();
-    const match = /language-(\w+)/.exec(props.className || "");
-    return match ? (
-      <SyntaxHighlighter {...props} style={theme.palette.mode === "light" ? vs : vs2015} language={match[1]} PreTag={React.Fragment} {...propOverrides} />
-    ) : (
-      <code {...props} />
+    const language = /language-(\w+)/.exec(props.className || "");
+    const isInPre = /mui-mdx-components-within-pre/.test(props.className || "");
+
+    if (language) {
+      const { children, ...otherProps } = props;
+      return (
+        <SyntaxHighlighter
+          children={children}
+          style={theme.palette.mode === "light" ? vs : vs2015}
+          language={language[1]}
+          PreTag={NoOpPre}
+          codeTagProps={{ ...otherProps, ...propOverrides.code }}
+        />
+      );
+    }
+
+    if (isInPre) {
+      return <code {...props} {...propOverrides.code} />;
+    }
+
+    const color =
+      theme.palette.mode === "light"
+        ? darken(theme.palette.background.default, 0.2)
+        : lighten(theme.palette.background.default, 0.2);
+
+    return (
+      <code
+        {...props}
+        style={{
+          borderRadius: theme.shape.borderRadius,
+          padding: "0.1rem",
+          backgroundColor: color,
+        }}
+        {...propOverrides.code}
+      />
     );
   },
   wrapper: (props: any) => (

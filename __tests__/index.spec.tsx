@@ -6,9 +6,27 @@ import TestTypography from "./data/TestTypography.md";
 import TestLink from "./data/TestLink.md";
 import TestLists from "./data/TestLists.md";
 import TestDivider from "./data/TestDivider.md";
+import TestBlockquote from "./data/TestBlockquote.md";
+import Example from "../example/Example.md";
+import { vitest } from "vitest";
 
 describe("MUI MDX Components", () => {
   let wrapper: RenderResult;
+
+  test("renders full example without any errors", () => {
+    const warningSpy = vitest.spyOn(console, "warn");
+    const errorSpy = vitest.spyOn(console, "error");
+    render(
+      <MDXProvider
+        components={components()}
+      >
+        <Example />
+      </MDXProvider>
+    );
+
+    expect(warningSpy).not.toHaveBeenCalled();
+    expect(errorSpy).not.toHaveBeenCalled();
+  });
 
   describe("Overrides", () => {
     beforeEach(() => {
@@ -192,6 +210,36 @@ describe("MUI MDX Components", () => {
     });
 
     test.each([["hr", "hr-id", "MuiDivider-fullWidth"]])(
+      "%s renders correctly.",
+      (element, idOverride, className) => {
+        const result = wrapper.container.querySelector(element);
+        expect(result).toBeTruthy();
+        expect(result?.getAttribute("id")).toEqual(idOverride);
+        expect(result?.className).toContain(className);
+      }
+    );
+  });
+
+  describe("Blockquotes", () => {
+    beforeEach(() => {
+      wrapper = render(
+        <MDXProvider
+          components={components({
+            propOverrides: {
+              blockquote: { id: "blockquote-id" },
+            },
+          })}
+        >
+          <TestBlockquote />
+        </MDXProvider>
+      );
+    });
+
+    test("renders successfully.", () => {
+      expect(wrapper).toBeTruthy();
+    });
+
+    test.each([["blockquote", "blockquote-id", "MuiPaper-elevation1"]])(
       "%s renders correctly.",
       (element, idOverride, className) => {
         const result = wrapper.container.querySelector(element);

@@ -2,7 +2,7 @@
 
 This module creates an MDX components object for use with MDXjs and Material UI.
 
-![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg?style=flat)
+![Coverage](https://img.shields.io/badge/coverage-99%25-brightgreen.svg?style=flat)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-blue)](https://github.com/joesturge/mui-mdx-components/issues)
 
 # Usage
@@ -41,34 +41,34 @@ export default () => <MDXProvider components={components(options)}>
 
 # Supported Components
 
-- [x] **h1**
-- [x] **h2**
-- [x] **h3**
-- [x] **h4**
-- [x] **h5**
-- [x] **h6**
-- [x] **p**
-- [x] **strong**
-- [x] **em**
-- [x] **ul**
-- [x] **ol**
-- [x] **li**
-- [x] **a**
-- [x] **hr**
-- [x] **wrapper**
-- [ ] **code**
-- [ ] **pre**
-- [ ] **blockquote**
-- [ ] **del**
-- [ ] **input**
-- [ ] **section**
-- [ ] **sup**
-- [ ] **table**
-- [ ] **tbody**
-- [ ] **td**
-- [ ] **th**
-- [ ] **thead**
-- [ ] **tr**
+🗹 **h1**
+🗹 **h2**
+🗹**h3**
+🗹 **h4**
+🗹 **h5**
+🗹 **h6**
+🗹 **p**
+🗹 **strong**
+🗹 **em**
+🗹 **ul**
+🗹 **ol**
+🗹 **li**
+🗹 **a**
+🗹 **hr**
+🗹 **wrapper**
+🗹 **code**
+🗹 **pre**
+🗹 **blockquote**
+☐ **del**
+☐ **input**
+☐ **section**
+☐ **sup**
+☐ **table**
+☐ **tbody**
+☐ **td**
+☐ **th**
+☐ **thead**
+☐ **tr**
 
 # Disclaimer
 
