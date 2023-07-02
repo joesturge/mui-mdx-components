@@ -68,6 +68,6 @@
     "fsevents": "2.3.2"
   },
   "dependencies": {
-    "react-syntax-highlighter": "15.5.0"
+    "react-syntax-highlighter": "^15.5.0"
   }
 }
