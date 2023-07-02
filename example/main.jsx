@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { MDXProvider } from "@mdx-js/react";
-import components from "../dist";
+import components from "../src/components";
 import Example from "./Example.md";
 import { ThemeProvider } from "@emotion/react";
 import { Container, CssBaseline, createTheme, Fab, SvgIcon, } from "@mui/material";

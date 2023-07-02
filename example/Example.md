@@ -339,9 +339,9 @@ Links
 
 Markdown supports two style of links: inline and reference.
 
-This is [an example](http://joeyespo.com/ "Title") inline link.
+This is [an example](https://dev.joesturge.com/ "Title") inline link.
 
-[This link](http://joeyespo.com/) has no title attribute.
+[This link](https://dev.joesturge.com/) has no title attribute.
 
 See my [About](/about/) page for some awesome people (*note: broken link*).
 
@@ -357,12 +357,12 @@ These should all be equivalent:
 - [foo 5][FOO 5]
 
 
-[id]: http://joeyespo.com/  "Optional Title Here"
-[foo 1]: http://joeyespo.com/  "Optional Title Here"
-[foo 2]: http://joeyespo.com/  'Optional Title Here'
-[foo 3]: http://joeyespo.com/  (Optional Title Here)
-[foo 4]: <http://joeyespo.com/>  "Optional Title Here"
-[foo 5]: http://joeyespo.com/
+[id]: https://dev.joesturge.com/  "Optional Title Here"
+[foo 1]: https://dev.joesturge.com/  "Optional Title Here"
+[foo 2]: https://dev.joesturge.com/  'Optional Title Here'
+[foo 3]: https://dev.joesturge.com/  (Optional Title Here)
+[foo 4]: <https://dev.joesturge.com/>  "Optional Title Here"
+[foo 5]: https://dev.joesturge.com/
     "Optional Title Here"
 
 
@@ -391,19 +391,19 @@ Code
 Images
 ------
 
-- ![Alt text](https://raw.githubusercontent.com/joeyespo/grip/master/artwork/favicon.ico)
-- ![Alt text](https://raw.githubusercontent.com/joeyespo/grip/master/artwork/favicon.ico "Optional title")
+- ![Alt text](https://dev.joesturge.com/favicon.svg)
+- ![Alt text](https://dev.joesturge.com/favicon.svg "Optional title")
 - ![Alt text][img]
 
 
-[img]: https://raw.githubusercontent.com/joeyespo/grip/master/artwork/favicon.ico   "Optional title attribute"
+[img]: https://dev.joesturge.com/favicon.svg   "Optional title attribute"
 
 
 Automatic links
 ---------------
 
-- <http://joeyespo.com/>
-- <joe@joeyespo.com>
+- <https://dev.joesturge.com/>
+- <info@joesturge.com>
 
 
 Backslash escapes
@@ -436,7 +436,7 @@ See [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-
 
 #### URL autolinking
 
-http://joeyespo.com
+https://dev.joesturge.com/
 
 
 #### Strikethrough
@@ -543,14 +543,3 @@ Task lists can be nested to better structure your tasks:
   - [ ] follow up subtask #4321
   - [ ] final subtask cc @mention
 - [x] a separate task
-
-
-#### References
-
-* SHA: dbcd7a410ee7489acf92f40641a135fbcf52a768
-* User@SHA: joeyespo@dbcd7a410ee7489acf92f40641a135fbcf52a768
-* User/Repository@SHA: joeyespo/grip@dbcd7a410ee7489acf92f40641a135fbcf52a768
-* #Num: #135
-* GH-Num: GH-135
-* User#Num: joeyespo#135
-* User/Repository#Num: joeyespo/grip#135

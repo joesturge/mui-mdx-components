@@ -11,7 +11,9 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "example": "vite ./example --config vite.config.ts --host"
+    "example": "vite ./example --config vite.config.ts --host",
+    "example-preview": "vite preview ./example --config vite.config.ts --host",
+    "example-build": "npm run clean && tsc && vite build ./example --config vite.config.ts "
   },
   "repository": {
     "type": "git",
