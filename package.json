@@ -10,7 +10,8 @@
     "build": "npm run clean && tsc && cp package.json README.md LICENSE ./dist",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "example": "vite ./example --config vite.config.ts --host"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "@types/node": "20.3.3",
     "@types/react": "17.0.62",
     "@types/react-dom": "17.0.20",
+    "@types/react-syntax-highlighter": "15.5.7",
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
     "@vitejs/plugin-react": "4.0.1",
@@ -62,7 +64,10 @@
     "vitest": "0.32.2"
   },
   "optionalDevDependencies": {
-    "@esbuild/android-arm": "^0.18.4",
-    "fsevents": "^2.3.2"
+    "@esbuild/android-arm": "0.18.4",
+    "fsevents": "2.3.2"
+  },
+  "dependencies": {
+    "react-syntax-highlighter": "15.5.0"
   }
 }
