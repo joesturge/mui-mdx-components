@@ -10,6 +10,7 @@ export default defineConfig({
             providerImportSource: "@mdx-js/react"
         })
     ],
+    base: "mui-mdx-components",
     test: {
         globals: true,
         environment: 'happy-dom',
