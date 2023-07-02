@@ -41,33 +41,33 @@ export default () => <MDXProvider components={components(options)}>
 
 # Supported Components
 
-🗹 **h1**
-🗹 **h2**
-🗹**h3**
-🗹 **h4**
-🗹 **h5**
-🗹 **h6**
-🗹 **p**
-🗹 **strong**
-🗹 **em**
-🗹 **ul**
-🗹 **ol**
-🗹 **li**
-🗹 **a**
-🗹 **hr**
-🗹 **wrapper**
-🗹 **code**
-🗹 **pre**
-🗹 **blockquote**
-☐ **del**
-☐ **input**
-☐ **section**
-☐ **sup**
-☐ **table**
-☐ **tbody**
-☐ **td**
-☐ **th**
-☐ **thead**
+🗹 **h1** \
+🗹 **h2** \
+🗹 **h3** \
+🗹 **h4** \
+🗹 **h5** \
+🗹 **h6** \
+🗹 **p** \
+🗹 **strong** \
+🗹 **em** \
+🗹 **ul** \
+🗹 **ol** \
+🗹 **li** \
+🗹 **a** \
+🗹 **hr** \
+🗹 **wrapper** \
+🗹 **code** \
+🗹 **pre** \
+🗹 **blockquote** \
+☐ **del** \
+☐ **input** \
+☐ **section** \
+☐ **sup** \
+☐ **table** \
+☐ **tbody** \
+☐ **td** \
+☐ **th** \
+☐ **thead** \
 ☐ **tr**
 
 # Disclaimer
