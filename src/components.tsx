@@ -127,6 +127,7 @@ const defaults: (
         sx={{
           padding: (theme) => theme.spacing(1),
           color: (theme) => theme.palette.text.secondary,
+          overflow: "auto",
         }}
         {...propOverrides.pre}
       >
