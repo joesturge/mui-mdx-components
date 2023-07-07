@@ -1,5 +1,5 @@
-GitHub Flavored Markdown Test
-=============================
+Markdown Test
+=============
 
 This Markdown file contains all the features of **GitHub Flavored Markdown** for
 testing a renderer with.
