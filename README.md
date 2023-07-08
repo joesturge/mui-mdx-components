@@ -4,7 +4,9 @@ This module creates an MDX components object for use with MDXjs and Material UI.
 
 See the example running here https://dev.joesturge.com/mui-mdx-components.
 
-![Coverage](https://img.shields.io/badge/coverage-99%25-brightgreen.svg?style=flat)
+![GithubCI](https://github.com/joesturge/mui-mdx-components/actions/workflows/node.js.yml/badge.svg)
+![Coverage](https://dev.joesturge.com/mui-mdx-components/badges/coverage.svg)
+[![npm version](https://badge.fury.io/js/mui-mdx-components.svg)](https://badge.fury.io/js/mui-mdx-components)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-blue)](https://github.com/joesturge/mui-mdx-components/issues)
 
 # Usage

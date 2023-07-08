@@ -16,7 +16,7 @@ export default defineConfig({
         environment: 'happy-dom',
         coverage: {
             include: ['src/**/*'],
-            reporter: ['text', 'json', 'html', "json-summary"],
+            reporter: ["json-summary"],
             all: true,
             lines: 80,
             functions: 80,
