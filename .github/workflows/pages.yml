@@ -45,7 +45,7 @@ jobs:
         uses: jaywcjlove/coverage-badges-cli@main
         with:
           source: coverage/coverage-summary.json
-          output: example/dist/badges/coveragae.svg
+          output: example/dist/badges/coverage.svg
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
