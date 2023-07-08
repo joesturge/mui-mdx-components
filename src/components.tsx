@@ -194,7 +194,7 @@ const defaults: (
   ),
 });
 
-const components = (options?: MuiMdxComponentsOptions) => {
+const components: ((options?: MuiMdxComponentsOptions) => MDXComponents) = options => {
   return {
     ...defaults(options?.propOverrides || {}),
     ...(options?.overrides || {}),
