@@ -39,6 +39,13 @@ jobs:
         run: npm install
       - name: Build
         run: npm run example-build
+      - name: Coverage
+        run: npm run coverage
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          source: coverage/coverage-summary.json
+          output: example/dist/badges/coveragae.svg
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
