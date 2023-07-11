@@ -10,15 +10,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import { MDXComponents } from "mdx/types.js";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { vs, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import {
-  MuiMdxComponentsOptions,
-  MuiMdxComponentsOptionsPropOverrides,
-} from "./types";
+import { MuiMdxComponentsOptions } from "./types";
 
-// eslint-disable-next-line react-refresh/only-export-components
-const NoOpPre = (
+const noOpPre = (
   props: React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLPreElement>,
     HTMLPreElement
@@ -27,36 +21,45 @@ const NoOpPre = (
   return <>{props.children}</>;
 };
 
-const defaults: (
-  propOverrides: MuiMdxComponentsOptionsPropOverrides
-) => MDXComponents = (propOverrides) => ({
+const inlineCodeContext = React.createContext(true);
+
+const defaults: (options: MuiMdxComponentsOptions) => MDXComponents = ({
+  propOverrides,
+  Highlighter,
+  highlighterStyle,
+}) => ({
   h1: (props: any) => (
-    <Typography {...props} component="h1" variant="h1" {...propOverrides.h1} />
+    <Typography {...props} component="h1" variant="h1" {...propOverrides?.h1} />
   ),
   h2: (props: any) => (
-    <Typography {...props} component="h2" variant="h2" {...propOverrides.h2} />
+    <Typography {...props} component="h2" variant="h2" {...propOverrides?.h2} />
   ),
   h3: (props: any) => (
-    <Typography {...props} component="h3" variant="h3" {...propOverrides.h3} />
+    <Typography {...props} component="h3" variant="h3" {...propOverrides?.h3} />
   ),
   h4: (props: any) => (
-    <Typography {...props} component="h4" variant="h4" {...propOverrides.h4} />
+    <Typography {...props} component="h4" variant="h4" {...propOverrides?.h4} />
   ),
   h5: (props: any) => (
-    <Typography {...props} component="h5" variant="h5" {...propOverrides.h5} />
+    <Typography {...props} component="h5" variant="h5" {...propOverrides?.h5} />
   ),
   h6: (props: any) => (
-    <Typography {...props} component="h6" variant="h6" {...propOverrides.h6} />
+    <Typography {...props} component="h6" variant="h6" {...propOverrides?.h6} />
   ),
   p: (props: any) => (
-    <Typography {...props} component="p" variant="body1" {...propOverrides.p} />
+    <Typography
+      {...props}
+      component="p"
+      variant="body1"
+      {...propOverrides?.p}
+    />
   ),
   strong: (props: any) => (
     <Typography
       {...props}
       component="strong"
       variant="inherit"
-      {...propOverrides.strong}
+      {...propOverrides?.strong}
     />
   ),
   em: (props: any) => (
@@ -64,7 +67,7 @@ const defaults: (
       {...props}
       component="em"
       variant="inherit"
-      {...propOverrides.em}
+      {...propOverrides?.em}
     />
   ),
   ul: (props: any) => (
@@ -72,7 +75,7 @@ const defaults: (
       {...props}
       component="ul"
       variant="inherit"
-      {...propOverrides.ul}
+      {...propOverrides?.ul}
     />
   ),
   ol: (props: any) => (
@@ -80,7 +83,7 @@ const defaults: (
       {...props}
       component="ol"
       variant="inherit"
-      {...propOverrides.ol}
+      {...propOverrides?.ol}
     />
   ),
   li: (props: any) => (
@@ -88,16 +91,16 @@ const defaults: (
       {...props}
       component="li"
       variant="inherit"
-      {...propOverrides.li}
+      {...propOverrides?.li}
     />
   ),
-  a: (props: any) => <Link {...props} {...propOverrides.a} />,
+  a: (props: any) => <Link {...props} {...propOverrides?.a} />,
   hr: (props: any) => (
     <Divider
       {...props}
       component="hr"
       sx={{ height: (theme) => theme.spacing(1) }}
-      {...propOverrides.hr}
+      {...propOverrides?.hr}
     />
   ),
   blockquote: (props: any) => (
@@ -114,7 +117,7 @@ const defaults: (
         color: (theme) => theme.palette.text.secondary,
         borderLeft: 3,
       }}
-      {...propOverrides.blockquote}
+      {...propOverrides?.blockquote}
     />
   ),
   pre: (props: any) => {
@@ -129,74 +132,66 @@ const defaults: (
           color: (theme) => theme.palette.text.secondary,
           overflow: "auto",
         }}
-        {...propOverrides.pre}
+        {...propOverrides?.pre}
       >
-        {React.Children.map(children, (child: React.ReactNode) => {
-          if (React.isValidElement(child)) {
-            const childOverride = {
-              className: [
-                child.props.className,
-                "mui-mdx-components-within-pre",
-              ]
-                .filter((item) => item)
-                .join(" "),
-              ...child.props,
-            };
-            return React.cloneElement(child, childOverride);
-          }
-          return child;
-        })}
+        <inlineCodeContext.Provider value={false}>
+          {children}
+        </inlineCodeContext.Provider>
       </Paper>
     );
   },
   code: (props: any) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
+    const isInline = React.useContext(inlineCodeContext);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const theme = useTheme();
     const language = /language-(\w+)/.exec(props.className || "");
-    const isInPre = /mui-mdx-components-within-pre/.test(props.className || "");
+    if (isInline) {
+      const color =
+        theme.palette.mode === "light"
+          ? darken(theme.palette.background.default, 0.2)
+          : lighten(theme.palette.background.default, 0.2);
 
-    if (language) {
-      const { children, ...otherProps } = props;
       return (
-        <SyntaxHighlighter
-          children={children}
-          style={theme.palette.mode === "light" ? vs : vs2015}
-          language={language[1]}
-          PreTag={NoOpPre}
-          codeTagProps={{ ...otherProps, ...propOverrides.code }}
+        <code
+          {...props}
+          style={{
+            borderRadius: theme.shape.borderRadius,
+            padding: "0.1rem",
+            backgroundColor: color,
+          }}
+          {...propOverrides?.code}
         />
       );
     }
 
-    if (isInPre) {
-      return <code {...props} {...propOverrides.code} />;
+    if (language && Highlighter) {
+      const { children, ...otherProps } = props;
+      const style = typeof highlighterStyle === "function" ? highlighterStyle(theme) : highlighterStyle;
+
+      return (
+        <Highlighter
+          children={children}
+          style={style}
+          language={language[1]}
+          PreTag={noOpPre}
+          codeTagProps={{...otherProps, ...propOverrides?.code}}
+        />
+      );
     }
 
-    const color =
-      theme.palette.mode === "light"
-        ? darken(theme.palette.background.default, 0.2)
-        : lighten(theme.palette.background.default, 0.2);
-
-    return (
-      <code
-        {...props}
-        style={{
-          borderRadius: theme.shape.borderRadius,
-          padding: "0.1rem",
-          backgroundColor: color,
-        }}
-        {...propOverrides.code}
-      />
-    );
+    return <code {...props} {...propOverrides?.code} />;
   },
   wrapper: (props: any) => (
-    <div {...props} className="markdown-body" {...propOverrides.wrapper} />
+    <div {...props} className="markdown-body" {...propOverrides?.wrapper} />
   ),
 });
 
-const components: ((options?: MuiMdxComponentsOptions) => MDXComponents) = options => {
+const components: (options?: MuiMdxComponentsOptions) => MDXComponents = (
+  options
+) => {
   return {
-    ...defaults(options?.propOverrides || {}),
+    ...defaults(options || {}),
     ...(options?.overrides || {}),
   };
 };
