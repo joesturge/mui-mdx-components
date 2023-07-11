@@ -192,7 +192,7 @@ const components: (options?: MuiMdxComponentsOptions) => MDXComponents = (
 ) => {
   return {
     ...defaults(options || {}),
-    ...(options?.overrides || {}),
+    ...(options?.overrides),
   };
 };
 export default components;
