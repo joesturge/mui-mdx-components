@@ -5,8 +5,13 @@ import components from "../src/components";
 import Example from "./Example.md";
 import { ThemeProvider } from "@emotion/react";
 import { Container, CssBaseline, createTheme, Fab, SvgIcon, } from "@mui/material";
-import { PrismLight as Highlighter } from 'react-syntax-highlighter';
-import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Light as Highlighter } from 'react-syntax-highlighter';
+import { javascript, python } from 'react-syntax-highlighter/dist/esm/languages/hljs';
+import { vs, vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+Highlighter.registerLanguage("javascript", javascript)
+Highlighter.registerLanguage("js", javascript)
+Highlighter.registerLanguage("python", python)
 
 const dark = createTheme({
   palette: {
@@ -31,7 +36,7 @@ const App = () => {
       <CssBaseline />
       <MDXProvider components={components({
         Highlighter,
-        highlighterStyle: theme => theme.palette.mode === "light" ? oneLight : oneDark
+        highlighterStyle: theme => theme.palette.mode === "light" ? vs : vs2015
       })}>
         <Fab onClick={toggle} color="primary" aria-label="mode" sx={{ position: "fixed", left: theme => theme.spacing(1), top: theme => theme.spacing(1) }}>
           <SvgIcon>
