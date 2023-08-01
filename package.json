@@ -60,7 +60,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vitejs/plugin-react": "4.0.4",
-    "@vitest/coverage-v8": "0.33.0",
+    "@vitest/coverage-v8": "0.34.1",
     "eslint": "8.46.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.3",
@@ -70,7 +70,7 @@
     "react-syntax-highlighter": "15.5.0",
     "typescript": "5.1.6",
     "vite": "4.4.8",
-    "vitest": "0.33.0"
+    "vitest": "0.34.1"
   },
   "optionalDevDependencies": {
     "@esbuild/android-arm": "0.18.4",
