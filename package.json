@@ -50,7 +50,7 @@
     "@emotion/styled": "11.11.0",
     "@mdx-js/react": "2.3.0",
     "@mdx-js/rollup": "2.3.0",
-    "@mui/material": "5.14.17",
+    "@mui/material": "5.14.18",
     "@testing-library/react": "12.1.5",
     "@types/jest": "29.5.8",
     "@types/node": "20.9.0",
