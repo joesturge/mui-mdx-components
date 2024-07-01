@@ -48,8 +48,8 @@
   "devDependencies": {
     "@emotion/react": "11.11.4",
     "@emotion/styled": "11.11.5",
-    "@mdx-js/react": "2.3.0",
-    "@mdx-js/rollup": "2.3.0",
+    "@mdx-js/react": "3.0.1",
+    "@mdx-js/rollup": "3.0.1",
     "@mui/material": "5.15.21",
     "@testing-library/react": "12.1.5",
     "@types/jest": "29.5.12",
